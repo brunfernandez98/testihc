@@ -3,6 +3,7 @@
     "name": "testihc",
     "slug": "testihc",
     "version": "1.0.0",
+    "owner": "brunfernandezrod",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -25,10 +26,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.brunfernandezrod.testihc"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b291b2a9-bd93-4d56-bb44-14c9526f172a"
+      }
     }
   }
 }
