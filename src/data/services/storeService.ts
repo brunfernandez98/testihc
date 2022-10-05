@@ -1,7 +1,16 @@
-import { DocumentNode, gql, useLazyQuery, useQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
 import { injectable } from "inversify";
-import { Store } from "../../domain/entities/Store";
-import { prepareQuery } from "./hooks/getData";
+
+import { DocumentNode, useQuery } from "@apollo/client";
+import { client } from "../../configApollo";
+
+export const query = async (query: DocumentNode) => {
+  const result = await client.query({
+    query: query,
+  });
+
+  return result;
+};
 
 const GET_STORES = gql`
   query Query {
@@ -15,10 +24,9 @@ const GET_STORES = gql`
 @injectable()
 export class StoreService {
   async getStores(): Promise<any> {
-    const { doQuery } = prepareQuery(GET_STORES);
     try {
-      const { data } = await doQuery();
-      return data.getStores;
+      const data = await query(GET_STORES);
+      return data.data.getStores;
     } catch (error) {
       return error;
     }

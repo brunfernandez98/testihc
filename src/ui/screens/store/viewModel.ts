@@ -1,5 +1,5 @@
 import { inject, injectable } from "inversify";
-import { makeObservable, observable } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 import { Store } from "../../../domain/entities/Store";
 import { GetStoresUseCase } from "../../../domain/useCases/getStores";
 
@@ -16,10 +16,24 @@ export class StoreViewModel {
     
     async getStores() {
         const stores = await this.stores.run();
-        this.listStores = stores;
-        if(this.listStores.length > 0) {
-            this.isLoading = true;
+        this.setListStores(stores);
+        if(stores.length > 0) {
+            this.setIsLoading(true);
         }
+        console.log(stores);
+    }
+    
+    
+
+
+
+   @action 
+   private setListStores(stores: Store[]) {
+        this.listStores = stores;
     }
   
+    @action
+    private setIsLoading(isLoading: boolean) {
+        this.isLoading = isLoading;
+    }
 }

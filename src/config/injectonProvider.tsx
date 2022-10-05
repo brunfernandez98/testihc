@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Container } from 'inversify';
-import {container} from './di';
+import { container } from './di';
+
 const InversifyContext = React.createContext<{ container: Container | null }>({ container: null });
 
 type Props = {

@@ -5,28 +5,28 @@ import { useContainer } from "../../../config/injectonProvider";
 import { StoreViewModel } from "./viewModel";
 import { container } from "../../../config/di";
 
+
 const Store = () => {
     const viewModel = useMemo(() => {
         const storeViewModel = container.get<StoreViewModel>(StoreViewModel);
         return storeViewModel;
     }, []);
 
-  
-    
+   
 
     if(viewModel.isLoading) {
         return (
-           <Button title="test" onPress={() => console.log("dsf")} />
+           <Button title="test" onPress={() => viewModel.getStores()} />
         )
     }
-    
+
+  
+
     return (
         <>
-       
-            
         <View>
             <Button
-                onPress={() => console.log('pressed')}
+                onPress={() => viewModel.getStores()}
                 title="Learn More"
                 color="#841584"
                 accessibilityLabel="Learn more about this purple button"
