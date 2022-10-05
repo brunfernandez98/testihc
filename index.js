@@ -7,4 +7,4 @@ import App from './App';
 // the environment is set up appropriately
 registerRootComponent(App);
 
-console.log('Hello world!');
+console.log('Hello world22!');
